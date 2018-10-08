@@ -1,0 +1,159 @@
+<div class="card">
+  <div class="card-block email-card">
+    <div class="row">
+      <!-- Left-side section start -->
+      <div class="col-lg-12 col-xl-3">
+        <div class="user-body">
+          <div class="card-block p-15">
+            <a [routerLink]="['/email/compose-email/']" class="btn btn-danger btn-block">Compose</a>
+          </div>
+          <ul class="page-list">
+            <li class="mail-section">
+              <a [routerLink]="['/email/email-inbox/']">
+                <i class="icofont icofont-inbox"></i> Inbox
+                <label class="label label-primary f-right">6</label>
+              </a>
+            </li>
+            <li class="mail-section">
+              <a [routerLink]="['/email/email-inbox/']">
+                <i class="icofont icofont-star"></i> Starred
+              </a>
+            </li>
+            <li class="mail-section">
+              <a [routerLink]="['/email/email-inbox/']">
+                <i class="icofont icofont-file-text"></i> Drafts
+              </a>
+            </li>
+            <li class="mail-section">
+              <a [routerLink]="['/email/email-inbox/']">
+                <i class="icofont icofont-paper-plane"></i> Sent Mail
+              </a>
+            </li>
+            <li class="mail-section">
+              <a [routerLink]="['/email/email-inbox/']">
+                <i class="icofont icofont-ui-delete"></i> Trash
+                <label class="label label-info f-right">30</label>
+              </a>
+            </li>
+          </ul>
+          <ul class="card-block label-list p-25">
+            <li>
+              <h5>Labels</h5></li>
+            <li>
+              <a class="mail-work" href="javascript:">Work</a>
+            </li>
+            <li>
+              <a class="mail-design" href="javascript:">Design</a>
+            </li>
+            <li>
+              <a class="mail-family" href="javascript:">Family</a>
+            </li>
+            <li>
+              <a class="mail-friends" href="javascript:">Friends</a>
+            </li>
+            <li>
+              <a class="mail-office" href="javascript:">Office</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Left-side section end -->
+      <!-- Right-side section start -->
+      <div class="col-lg-12 col-xl-9">
+        <div class="mail-body">
+          <div class="mail-body-header">
+            <div class="btn-group" role="group" data-toggle="tooltip" data-placement="top" title="" data-original-title=".btn-xlg">
+              <button type="button" class="btn btn-primary btn-xs waves-effect waves-light">
+                <i class="icofont icofont-exclamation-circle"></i>
+              </button>
+              <button type="button" class="btn btn-primary btn-xs waves-effect waves-light">
+                <i class="icofont icofont-inbox"></i>
+              </button>
+              <button type="button" class="btn btn-primary btn-xs waves-effect waves-light">
+                <i class="icofont icofont-ui-delete"></i>
+              </button>
+            </div>
+            <div ngbDropdown class="btn-group dropdown-split-primary">
+              <button type="button" class="btn btn-primary">
+                <i class="icofont icofont-ui-folder"></i>
+              </button>
+              <button ngbDropdownToggle type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle primary</span>
+              </button>
+              <div ngbDropdownMenu class="dropdown-menu">
+                <a class="dropdown-item waves-effect waves-light" href="javascript:">Action</a>
+                <a class="dropdown-item waves-effect waves-light" href="javascript:">Another action</a>
+                <a class="dropdown-item waves-effect waves-light" href="javascript:">Something else here</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item waves-effect waves-light" href="javascript:">Separated link</a>
+              </div>
+            </div>
+            <div ngbDropdown class="btn-group dropdown-split-primary">
+              <button type="button" class="btn btn-primary">
+                More
+              </button>
+              <button ngbDropdownToggle type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle primary</span>
+              </button>
+              <div ngbDropdownMenu class="dropdown-menu">
+                <a class="dropdown-item waves-effect waves-light" href="javascript:">Action</a>
+                <a class="dropdown-item waves-effect waves-light" href="javascript:">Another action</a>
+                <a class="dropdown-item waves-effect waves-light" href="javascript:">Something else here</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item waves-effect waves-light" href="javascript:">Separated link</a>
+              </div>
+            </div>
+          </div>
+          <div class="mail-body-content email-read">
+            <div class="card">
+              <div class="card-header">
+                <h5>Here You Have New Opportunity...</h5>
+                <h6 class="f-right">08:23 AM</h6>
+              </div>
+              <div class="card-body">
+                <div class="media m-b-20">
+                  <div class="media-left photo-table">
+                    <a href="javascript:">
+                      <img class="media-object img-circle" src="assets/images/avatar-3.png" alt="E-mail User">
+                    </a>
+                  </div>
+                  <div class="media-body photo-contant">
+                    <a href="javascript:"><h6 class="user-name txt-primary">John Doe</h6></a>
+                    <a class="user-mail txt-muted" href="javascript:"><h6>From:johndoe1543@gmail.com</h6></a>
+                    <div>
+                      <h6 class="email-welcome-txt">Hello Dear...</h6>
+                      <p class="email-content">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
+                        sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
+                        justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
+                        porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.
+                        Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum
+                        rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,
+                      </p>
+                    </div>
+                    <div class="m-t-15">
+                      <i class="icofont icofont-clip f-20 m-r-10"></i>Attachments <b>(3)</b>
+                      <div class="row mail-img">
+                        <div class="col-sm-4 col-md-2 col-xs-12">
+                          <a href="javascript:"><img class="card-img-top img-fluid img-thumbnail" src="assets/images/card-block/card1.jpg" alt="Card image cap"></a>
+                        </div>
+                        <div class="col-sm-4 col-md-2 col-xs-12">
+                          <a href="javascript:"><img class="card-img-top img-fluid img-thumbnail" src="assets/images/card-block/card2.jpg" alt="Card image cap"></a>
+                        </div>
+                        <div class="col-sm-4 col-md-2 col-xs-12">
+                          <a href="javascript:"><img class="card-img-top img-fluid img-thumbnail" src="assets/images/card-block/card13.jpg" alt="Card image cap"></a>
+                        </div>
+                      </div>
+                      <textarea class="form-control m-t-30 col-xs-12 email-textarea" id="exampleTextarea-1" placeholder="Reply Your Thoughts" rows="4"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Right-side section end -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class = "row">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i><a style="color:blue;margin-top: -3px;margin-left: 5px;" routerLink="" (click)="routeModelList()"> Go back to Model list</a>
+</div>
+<br/><br/>
+<div class="container-fluid">
+    <div class="row">
+                <div class="col-8">
+                    <h3>API Documentation</h3>
+                    <div class="form-group col-12">
+                        <label>Endpoint:</label>
+                        <label class="form-control">{{endPoint}}/ml/predict/{{modelId}}</label>
+                    </div>
+                    <div class="form-group col-12">
+                        <label>Headers</label>
+                        <label class="form-control">Content-Type: application/json</label>
+                    </div>
+                    <div class="form-group col-12">
+                        <label>Request Payload</label>
+                        <label class="form-control">{{requestString}}</label>
+                    </div>
+                    <div class="form-group col-12">
+                        <label>Response Format</label>
+                        <label class="form-control">{{responseString}}</label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div style="min-height:100px;" class="pull-right">
+                        <i class="fa fa-5x fa-plug fa-rotate-270"></i>
+                    </div>
+                </div>
+              </div>
+              </div>

@@ -1,0 +1,71 @@
+/* You can add global styles to this file, and also import other style files */
+
+aside.pcoded-slider.ng-sidebar {
+    top: 56px;
+}
+
+.slimscroll-wrapper, .scroll-window {
+    width: 100% !important;
+}
+
+.userlist-box.show {
+    display: -webkit-box;
+}
+
+.userlist-box.hide {
+    display: none;
+}
+
+.item-btn {
+    display:block;
+}
+
+.pcoded .pcoded-navbar .pcoded-item .pcoded-hasmenu[subitem-icon="style6"] .pcoded-submenu li > a .pcoded-mtext:before{
+    content:none !important;
+}
+.pcoded[theme-layout="vertical"] .pcoded-navbar .pcoded-item li.pcoded-hasmenu[dropdown-icon="style3"] > a:after{
+    content:none !important;
+}
+
+.list-anchor > i{
+    margin:5px 3px !important;
+}
+.list-anchor > i.icofont-plus{
+    float: right;
+    display: none;
+    color: #fff;
+}
+div[vertical-nav-type="expanded"] .list-anchor:hover > i.icofont-plus{
+    float: right;
+    display: block ;
+    color: #fff;
+}
+
+
+.list-anchor > i.icofont-pencil-alt-2{
+    float: right;
+    display: none;
+    color: #3498DB ;
+}
+div[vertical-nav-type="expanded"] .list-anchor:hover > i.icofont-pencil-alt-2{
+    float: right;
+    display: block ;
+    color: #3498DB ;
+}
+
+
+.list-anchor > i.icofont-ui-delete{
+    float: right;
+    display: none;
+    color: #e74c3c ;
+}
+div[vertical-nav-type="expanded"] .list-anchor:hover > i.icofont-ui-delete{
+    float: right;
+    display: block ;
+    color: #e74c3c ;
+}
+/* .pcoded-submenu{
+    position: absolute;
+    left: 208px;
+    top: 19px;
+} */

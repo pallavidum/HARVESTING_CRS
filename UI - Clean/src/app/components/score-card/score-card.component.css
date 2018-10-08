@@ -1,0 +1,12 @@
+.farmerDetail{
+    cursor: pointer;
+}
+.farmerDetail:hover{
+    background-color: rgb(227, 227, 227);
+    cursor: pointer;
+}
+
+.nav-link{
+    font-weight:bold !important;
+    color: black !important;
+}

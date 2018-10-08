@@ -1,0 +1,52 @@
+<div class="row users-card">
+    <div class="col-lg-12 col-xl-12 col-md-12">
+        <div class="card rounded-card user-card center">
+            <div class="card-body text-center center p-50">
+                <form [formGroup]="createProject" (ngSubmit)="onSubmit()" novalidate>
+                    <div>
+                        <div class="group">
+                            <input formControlName="projectName" type="text" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>Project Name</label>
+                        </div>
+                        <div class="group">
+                            <input formControlName="modelName" type="text" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>Model Name</label>
+                        </div>
+                    </div>
+                    <div>
+                        <div *ngIf="!isUploading">
+                            <label class="text-gray btn-default-width">Select File</label><br>
+                            <label class="text-gray">{{this.uploadedFiles[0]}}</label><br>
+                            <label class="text-gray" *ngIf="uploadedFiles.length == 0">{{this.filesInProject[0]}}</label><br>
+                            <br/>
+                            <label class="btn btn-green btn-default-size">                                
+                SELECT <input (change)="fileUploadChange($event)" #fileUpload type="file" style="display: none;">
+            </label>
+                        </div>
+                        
+                        <div class="loader-container" *ngIf="isUploading">
+                            <div class="row center ">
+                                    <label class="text-gray">{{this.uploadedFiles[0]}}</label><br>
+                                <div class="crs-loader"></div>
+                            </div>
+                            <br/>
+                            <div>
+                                <button class="btn btn-gray btn-default-size" (click)="onCancel()">CANCEL</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-t-100">
+                        <button (click)="moveback()" type="button" class="btn btn-gray btn-default-size">BACK</button>
+                        <button [hidden]="(modelConfiguration.isSaved || filesInProject.length>0) && uploadedFiles.length==0" [disabled]="!(createProject.valid && uploadedFiles.length>0)" type="submit" class="btn btn-green btn-default-size">UPLOAD</button>
+                        <button [hidden]="uploadedFiles.length>0 || filesInProject.length==0" [disabled]="!createProject.valid" (click)="moveNext()"  class="btn btn-green btn-default-size">NEXT</button>
+                    </div>
+                </form>            
+
+            </div>            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+{
+    "database": {
+        "connectionString": "mongodb://harvesting:ecxps0479a@13.84.178.115:27017/crs?authSource=admin&readPreference=primary"
+    },
+    "server": {
+        "port": 8080,
+        "jwtSecret": "CrsDev",
+        "jwtExpiration": "1h",
+        "routePrefix": "/api",
+        "plugins": [
+            "logger",
+            "jwt-auth",
+            "swagger"
+        ],
+        "mlUrl": "http://crs.harvesting.co:5123/"
+    }
+}

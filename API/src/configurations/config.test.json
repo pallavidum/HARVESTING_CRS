@@ -1,0 +1,15 @@
+{
+    "database": {
+        "connectionString": "mongodb://localhost:27017/crs-test"
+    },
+    "server": {
+        "port": 5000,
+        "jwtSecret": "CrsTest",
+        "jwtExpiration": "1h",
+        "routePrefix": "/api",
+        "plugins": [
+            "logger",
+            "jwt-auth"
+        ]
+    }
+}

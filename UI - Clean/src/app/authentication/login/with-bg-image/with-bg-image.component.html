@@ -1,0 +1,70 @@
+<section class="login p-fixed d-flex text-center bg-primary common-img-bg-harvesting">
+    <div class="auth-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="login-card card-body auth-body">
+                    <form class="md-float-material" [formGroup]="loginForm" (keydown)="keyDownFunction($event)" novalidate>
+                        <div class="auth-box">
+                            <div class="row m-b-20">
+                                <div class="col-12">
+                                    <h4 style="color:#5d755b" class="txt-primary text-center">Harvesting Inc</h4>
+                                </div>
+                                <div class="col-md-12">
+                                    <h3 class="text-left txt-primary">Sign In</h3>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="input-group">
+                                <input formControlName="email" type="email" class="form-control" placeholder="Your Email Address">
+                                <span class="md-line"></span>
+                            </div>
+                            <div class="input-group">
+                                <input formControlName="password" type="password" class="form-control" placeholder="Password">
+                                <span class="md-line"></span>
+                            </div>
+                            <div class="row m-t-25 text-left hidden">
+                                <div class="col-sm-7 col-xs-12">
+                                    <div class="checkbox-fade fade-in-primary">
+                                        <label>
+                      <input type="checkbox" value="">
+                      <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                      <span class="text-inverse">Remember me</span>
+                    </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 col-xs-12 forgot-phone text-right hidden">
+                                    <a [routerLink]="['/authentication/forgot']" class="text-right f-w-600 text-inverse"> Forgot Your Password?</a>
+                                </div>
+                            </div>
+                            <div class="row m-t-30">
+                                <div class="col-md-12">
+                                    <button (click)="onSubmit()" type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Sign in</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-dialog [(visible)]="showDialog">
+        <div style="
+        margin-top: -2%;
+        height: 55px;
+        width: 104%;
+        background-color: #28e1bd;
+        margin-left: -11px;">
+                <span style="font-weight: bold;float:left;display: inline-block;font-size: 1.5em;font-family: Arial;margin-top: 10px;margin-left: 10px;color: white;"><i class="fa fa-info" style="margin-right:10px;"></i>Invalid Credentials</span>
+        </div>
+        <div class="container-fluid">
+            <br/>
+            <div class="row">
+                <span style="margin-left:1%;font-size:20px;color:rgb(91, 86, 86)">Please enter valid credentials</span>
+            </div>
+            <br/>
+        <div class="row">
+         <button (click)="showDialog=!showDialog" class="btn btn btn-info btn-sm">OK</button>
+        </div>
+        </div>
+    </app-dialog>
+</section>

@@ -1,0 +1,103 @@
+/* $mainColor: #07c;
+$baseColor: #fff; */
+
+.wizard-container {
+    width: 500px;
+}
+
+.wizard-progress {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    position: relative;
+}
+
+.wizard-progress .step {
+    display: table-cell;
+    text-align: center;
+    vertical-align: top;
+    overflow: visible;
+    position: relative;
+    font-size: 14px;
+    /* color: #fff; */
+    font-weight: bold;
+}
+
+.wizard-progress .step:not(:last-child):before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 37px;
+    background-color: #fff;
+    height: 2px;
+    /*6px;*/
+    width: 100%;
+}
+
+.wizard-progress .step .node {
+    display: inline-block;
+    /* border: 6px solid #fff; */
+    border: 2px solid red;
+    background-color: #fff;
+    border-radius: 25px;
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    margin-left: -18px;
+}
+
+.wizard-progress .step.complete:before {
+    background-color: #9B9B9B;
+}
+
+.wizard-progress .step.complete .node {
+    border-color: #9B9B9B;
+    background-color: #9B9B9B;
+}
+
+
+/* .wizard-progress .step.complete .node:before {
+    font-family: FontAwesome;
+    content: "\f00c";
+  } */
+
+
+/* .wizard-progress .step.in-progress:before {
+    background: #07c;
+    background: -moz-linear-gradient(left, #07c 0%, #fff 100%);
+    background: -webkit-linear-gradient(left, #07c 0%, #fff 100%);
+    background: linear-gradient(to right, #07c 0%, #fff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(     startColorstr='#07c', endColorstr='#fff',GradientType=1 );
+  } */
+
+.wizard-progress .step.in-progress .node {
+    border-color: #9B9B9B;
+}
+
+
+/*  */
+
+.create-model-card {
+    height: 200px;
+    width: 200px;
+    background: #9CC63E;
+    box-shadow: 0 2px 3px 0 rgba(128, 128, 128, 0.50);
+    border-radius: 5px;
+    font-size: 20px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+}
+
+.title {
+    font-weight: 100;
+}
+
+.info-title {
+    ont-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+}

@@ -1,0 +1,90 @@
+<!-- round card start -->
+<div class="card rounded-card user-card" *ngIf="classes.length>0">
+    <div class="card-body">
+        <p class="lead">Confusion Matrix ({{type}})</p>
+        <div class="row">
+            <!-- Actual -->
+            <div class="col-1">
+                <p class="rotate-90-center">Actual</p>
+            </div>
+            <div class="col-11 actual p-t-20">
+                <div class="row">
+                    <div class="col-6 label-center">Class - ` {{classes[0]}}</div>
+                    <div class="col-6 label-center">Class - ` {{classes[1]}}</div>
+                    <div class="col-6">
+                        <div class="blue-tile">
+                            <span class="center-content">{{data[0][0]}}</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="orange-tile">
+                            <span class="center-content">{{data[0][1]}}</span>
+                        </div>
+                    </div>
+                    <div class="col-6 m-t-30">
+                        <div class="orange-tile">
+                            <span class="center-content">{{data[1][0]}}</span>
+                        </div>
+                    </div>
+                    <div class="col-6 m-t-30">
+                        <div class="blue-tile">
+                            <span class="center-content">{{data[1][1]}}</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center m-t-30">Predicted</p>
+            </div>
+            <!-- Detail -->
+            <!-- <div class="col-xs-6 col-md-6 col-xl-6 col-lg-6">
+                <div class="text-center">
+                    <span class="label-center">DETAILS</span>
+                </div>
+                <div class="row justify-content-center detail-table-container">
+                    <table class="col-8 detail-table" style=" margin-right: 10px;table-layout: fixed;">
+                        <tr>
+                            <td>
+                                <div><b>Sensitivity</b></div>
+                                <div>0.934</div>
+                            </td>
+                            <td>
+                                <div><b>Recall</b></div>
+                                <div>0.934</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div><b>Specificity</b></div>
+                                <div>0.934</div>
+                            </td>
+                            <td>
+                                <div><b>Kappa</b></div>
+                                <div>0.934</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div><b>Precision</b></div>
+                                <div>0.934</div>
+                            </td>
+                            <td>
+                                <div><b>Accuracy</b></div>
+                                <div>0.934</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div><b>F1</b></div>
+                                <div>0.934</div>
+                            </td>
+                            <td>
+                                <div></div>
+                                <div></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+<!-- Round card end -->

@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>HARVESTING</title>
+
+    <style>
+        #bodyContentBlockInner {
+            background-color: #eeeeee;
+            box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+        }
+
+        .headerContent {
+            color: #000000;
+            font-family: Helvetica;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 100%;
+            padding-top: 20px;
+            padding-right: 0;
+            padding-bottom: 0;
+            padding-left: 0;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        */ .DetailContent {
+            color: #000000;
+            font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
+            font-size: 17px;
+            line-height: 150%;
+            text-align: left;
+        }
+
+        /*
+        @tab Upper Body
+        @section calendar detail link
+        @tip Set the styling for your email's calendar detail content links. Choose a color that helps them stand out from your text.
+        */
+        .DetailContent a:link,
+        .DetailContent a:visited,
+        .DetailContent a .yshortcuts {
+            color: #0E76BC;
+            font-weight: normal;
+            text-decoration: underline;
+        }
+
+        .upperBodyContent img,
+        DetailContent img {
+            display: inline;
+            height: auto;
+        }
+
+        .upperBodyContent img {
+            max-width: 520px !important;
+        }
+
+        .DetailContent img {
+            max-width: 300px !important;
+        }
+
+        body,
+        #bodyTable {
+            background-color: #eeeeee;
+        }
+
+        .highlight-content {
+            background-color: #ffdab9;
+        }
+
+        #bodyContentBlockOuter {
+            background-color: #FFFFFF;
+            border: 0;
+            box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+        }
+
+        #templateBody {
+            background-color: #eeeeee;
+            border-top: 0;
+            border-bottom: 0;
+        }
+
+        .headerContent a:link,
+        .headerContent a:visited,
+        .headerContent a .yshortcuts {
+            color: #3a4349;
+            font-weight: normal;
+            text-decoration: underline;
+        }
+
+        .headerContent {
+            color: #000000;
+            font-family: Helvetica;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 100%;
+            padding-top: 20px;
+            padding-right: 0;
+            padding-bottom: 0;
+            padding-left: 0;
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
+    <center>
+        <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
+            <tr>
+                <td align="center" valign="top">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateContainer">
+                        <tr>
+                            <td align="center" valign="top">
+                                <!-- // BEGIN BODY -->
+                                <table border="0" cellpadding="40" cellspacing="0" width="100%" id="templateBody">
+                                    <tr>
+                                        <td align="center" valign="top">
+                                            <table border="0" cellpadding="20" cellspacing="0" width="800" id="bodyContentBlockOuter">
+                                                <tr>
+                                                    <td align="center" valign="top">
+                                                        <table border="0" cellpadding="20" cellspacing="0" width="100%"
+                                                            id="bodyContentBlockInner">
+                                                            <tr>
+                                                                <td valign="top" class="headerContent" style="padding-bottom: 0;padding-left: 15px">
+                                                                    <img src="https://flm.harvesting.co/assets/images/logo.png"
+                                                                        style="float: left" />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left" valign="top">
+                                                                    <table border="0" cellpadding="0" cellspacing="0"
+                                                                        width="100%">
+                                                                        <tr>
+                                                                            <td valign="middle" class="DetailContent">Hi,</td><br />
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td valign="middle" class="DetailContent">{{username}}
+                                                                                has submitted the following request:<br />
+                                                                                <br />
+                                                                                <div>
+                                                                                    <p>
+                                                                                        <b>Subject</b>: {{subject}},
+                                                                                    </p>
+                                                                                    <p> <b>Message</b>: {{message}}</p>
+
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td valign="middle" class="DetailContent">
+                                                                                <br />
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td valign="middle" class="DetailContent error-message"
+                                                                                style="color: #FF0000;">&nbsp;</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td valign="middle" class="DetailContent">Thanks,
+                                                                                <br />
+                                                                                Harvesting.</td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!-- END BODY \\ -->
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </center>
+</body>
+
+</html>

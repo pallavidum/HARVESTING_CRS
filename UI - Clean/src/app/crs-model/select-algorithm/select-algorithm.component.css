@@ -1,0 +1,63 @@
+.default-card-size {
+    background: #FFFFFF;
+    box-shadow: 0 2px 3px 0 rgba(128, 128, 128, 0.50);
+    border-radius: 5px;
+    cursor: pointer;
+    /*min-height: 400px;*/
+    min-width: 235px;
+}
+
+.active {
+    box-shadow: 0 4px 10px 0 rgba(18, 214, 116, 1) !important;
+}
+
+@media screen and (max-width: 1024px) {
+    /* start of large tablet styles */
+    .default-card-size {
+        background: #FFFFFF;
+        box-shadow: 0 2px 3px 0 rgba(128, 128, 128, 0.50);
+        border-radius: 5px;
+        cursor: pointer;
+        min-height: 400px;
+        min-width: 235px;
+    }
+
+}
+
+@media screen and (max-width: 992px) {
+    /* start of large tablet styles */
+    .default-card-size {
+        background: #FFFFFF;
+        box-shadow: 0 2px 3px 0 rgba(128, 128, 128, 0.50);
+        border-radius: 5px;
+        cursor: pointer;
+        min-height: 400px;
+        min-width: 235px;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+    /* start of medium tablet styles */
+    .default-card-size {
+        background: #FFFFFF;
+        box-shadow: 0 2px 3px 0 rgba(128, 128, 128, 0.50);
+        border-radius: 5px;
+        cursor: pointer;
+        min-height: 450px;
+        min-width: 235px;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    /* start of phone styles */
+    .default-card-size {
+        background: #FFFFFF;
+        box-shadow: 0 2px 3px 0 rgba(128, 128, 128, 0.50);
+        border-radius: 5px;
+        cursor: pointer;
+        min-height: 350px;
+        min-width: 235px;
+    }
+}
+

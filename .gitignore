@@ -1,0 +1,17 @@
+ML_sandbox/xgboost/
+
+API/node_modules/
+
+API/package-lock\.json
+
+API/build/
+
+ML_sandbox/__pycache__/
+
+ML_sandbox/temp_features/
+
+ML_sandbox/temp_models/
+
+ML_sandbox/user_aie_datasets/*
+
+ML_sandbox/user_datasets/*

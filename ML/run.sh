@@ -1,0 +1,1 @@
+gunicorn --workers 6 -b 0.0.0.0:5123 app:app --reload --timeout 300 --keep-alive 10

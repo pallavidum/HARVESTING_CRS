@@ -1,0 +1,11 @@
+node_modules/
+
+\.angulardoc\.json
+
+package-lock\.json
+
+semantic/
+
+*.orig
+
+dist/

@@ -1,0 +1,22 @@
+.loading-text {
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
+    font-size: 20px;
+    color: #9B9B9B;
+    letter-spacing: 0;
+    line-height: 25px;
+}
+
+.smooth-edges {
+    background: #FFFFFF;
+    box-shadow: 0 2px 3px 0 rgba(128, 128, 128, 0.50);
+    border-radius: 5px;
+}
+
+.card-body {
+    padding: 5%;
+}
+
+.col-6 {
+    padding-bottom: 20px;
+}

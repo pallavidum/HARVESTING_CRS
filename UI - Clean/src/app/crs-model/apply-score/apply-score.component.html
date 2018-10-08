@@ -1,0 +1,19 @@
+<div class="card rounded-card user-card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6 p-50">
+                <app-score-card [data]="data" [csvPath]="selectedDataSet.csvPath"></app-score-card>
+            </div>
+            <div class="col-6 p-50">
+                <app-bell-curve [data]="data" [score]=0 title="Score Card"></app-bell-curve>
+                <div class="row" style="margin-top:40px;"></div>
+                <nouislider (change)="updateScreen('first',$event)" [config]="someKeyboardConfig"></nouislider>
+            </div>
+        </div>
+    </div>
+    <div class="m-t-100 text-center">
+            <button (click)="moveBack()" class="btn btn-gray btn-default-size">BACK</button>
+        </div>
+        <br/>
+        <br/>
+</div>

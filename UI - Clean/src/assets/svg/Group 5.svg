@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 5</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="CRS-Dashboard_2" transform="translate(-1016.000000, -306.000000)">
+            <g id="Group" transform="translate(930.000000, 306.000000)">
+                <g id="Group-5" transform="translate(86.000000, 0.000000)">
+                    <circle id="Oval-3" fill="#7ED321" cx="6" cy="6" r="6"></circle>
+                    <path d="M8.03925725,4.54142643 L5.31308482,7.26780857 L4.31551541,6.27023916 C4.13181333,6.08632738 3.83382171,6.08632738 3.65011963,6.27023916 C3.46620785,6.45394124 3.46620785,6.75193286 3.65011963,6.93563494 L4.98049178,8.26600709 C5.07234282,8.35785813 5.19292352,8.40399335 5.31329452,8.40399335 C5.43366552,8.40399335 5.55403652,8.35806783 5.64588756,8.26600709 L8.70486273,5.20703192 C8.88856481,5.02312013 8.88856481,4.72533822 8.70486273,4.54142643 C8.52095095,4.35772435 8.22316903,4.35772435 8.03925725,4.54142643 Z" id="Shape" fill="#000000" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

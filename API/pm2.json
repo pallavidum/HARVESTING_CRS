@@ -1,0 +1,18 @@
+{
+    "apps": [{
+            "exec_mode": "cluster",
+            "instances": 4,
+            "script": "./api/index.js",
+            "name": "crs-nodejs-api",
+            "interpreter": "node",
+            "env": {
+                "NODE_ENV": "prod"
+            }
+        },
+        {
+            "name": "crs-python-api",
+            "script": "./MLDev/run.sh",
+            "interpreter": "bash"
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+<div class="card chart-card" [ngClass]="cardClass">
+<div class="table-responsive">
+<table class="table">
+    <thead class="list-th lighten-4">
+        <tr>
+            <th>MODEL NAME</th>
+            <th>GINI</th>
+            <th>DATE OF CREATION</th>
+            <th>CREATED BY</th>
+            <th>STATUS</th>
+            <th>API End Point</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- <tr *ngFor="let models of configModel.models;let i=index"> -->
+          <tr class="list-tr" *ngFor="let model of models">
+            <td scope="row"><a style="color:blue" routerLink="" (click)="selectModel(model.configureModel)">{{model.configModel.modelName}}</a></td>
+            <td> {{((2*(model.configModel.modelResult.roc_data.acc_test))-1).toFixed(2)}}</td>
+            <!-- <td>{{((2*model.configModel.modelResult.roc_data.acc_train)-1).toFixed(2)}}</td> -->
+            <td>{{model.configModel.createdAt | date}}</td>
+            <td>Admin</td>
+            <td>Completed</td>
+            <td><a style="color:blue" routerLink="" (click)="loadAPI(model.configureModel)">Click here</a></td>
+            <td>
+                    <i class="fa fa-trash" style="cursor: hand;" (click)="deleteProject(model)"></i>
+            </td>
+          <!-- </tr> -->
+        </tr>        
+    </tbody>
+</table>
+</div>
+<app-dialog [(visible)]="showDialog">
+    <div style="
+    margin-top: -2%;
+    height: 55px;
+    width: 104%;
+    background-color: #eb4848;
+    margin-left: -11px;">
+            <span style="font-weight: bold;display: inline-block;font-size: 1.5em;font-family: Arial;font-weight: bold;margin-top: 10px;margin-left: 10px;color: whitesmoke;"><i class="fa fa-trash"></i> Delete Model</span>
+    </div>
+    <div class="container-fluid">
+        <br/>
+        <div class="row">
+            <span *ngIf="deleteModel" style="margin-left:1%;font-size:20px;">Are you sure you want to delete model '{{deleteModel.modelName}}' ?</span>
+        </div>
+        <br/>
+        <br/>
+    <button (click)="delete()" class="btn btn btn-info btn-sm" style="margin-left:-15px;">Confirm</button>
+    <button (click)="showDialog = !showDialog" class="btn btn btn-info btn-sm">Cancel</button>
+    </div>
+</app-dialog>
+</div>

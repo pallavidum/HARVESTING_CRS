@@ -1,0 +1,978 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{credit\_scoring}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{UnivariateAnalysis} \PY{k}{import} \PY{n}{UnivariateAnalysis}
+        \PY{k+kn}{import} \PY{n+nn}{re}
+        \PY{k+kn}{from} \PY{n+nn}{collections} \PY{k}{import} \PY{n}{Counter}
+        \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+        \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{os}
+        \PY{k+kn}{from} \PY{n+nn}{LogisticRegression} \PY{k}{import} \PY{n}{LogisticRegression}
+        \PY{k+kn}{from} \PY{n+nn}{RandomForest} \PY{k}{import} \PY{n}{RandomForest}
+        \PY{k+kn}{from} \PY{n+nn}{GradientBoostedTrees} \PY{k}{import} \PY{n}{GradientBoost}
+        \PY{k+kn}{from} \PY{n+nn}{CreditRisk} \PY{k}{import} \PY{n}{CreditRisk}
+        \PY{k+kn}{import} \PY{n+nn}{json}
+        \PY{k+kn}{from} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{stats} \PY{k}{import} \PY{n}{binned\PYZus{}statistic}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+        \PY{k+kn}{from} \PY{n+nn}{operator} \PY{k}{import} \PY{n}{itemgetter}
+        \PY{k+kn}{import} \PY{n+nn}{itertools}
+        \PY{k+kn}{import} \PY{n+nn}{pymongo}
+        \PY{k+kn}{from} \PY{n+nn}{pymongo} \PY{k}{import} \PY{n}{MongoClient}
+        \PY{k+kn}{import} \PY{n+nn}{urllib}\PY{n+nn}{.}\PY{n+nn}{request}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{URL} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{http://localhost:5000/api/Uploads/a961b410\PYZhy{}5eda\PYZhy{}cb5f\PYZhy{}a73b\PYZhy{}2e6dd3aec98e.xlsx}\PY{l+s+s2}{\PYZdq{}}
+        \PY{n}{result} \PY{o}{=} \PY{n}{LogisticRegression}\PY{p}{(}\PY{n}{URL}\PY{p}{,} \PY{n}{test\PYZus{}size}\PY{o}{=}\PY{l+m+mf}{0.2}\PY{p}{)}\PY{o}{.}\PY{n}{run}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+LogisticRegression.self.url: http://localhost:5000/api/Uploads/a961b410-5eda-cb5f-a73b-2e6dd3aec98e.xlsx
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{proba} \PY{o}{=} \PY{n}{result}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+        \PY{n}{woe\PYZus{}result} \PY{o}{=} \PY{n}{result}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{proba}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{woe\PYZus{}result}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+25000
+25000
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}
+            \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{woe\PYZus{}results}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{woe\PYZus{}result}\PY{p}{,}
+             \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{default\PYZus{}proba}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{proba}
+            \PY{p}{\PYZcb{}}\PY{p}{)}
+        \PY{n}{df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:}    default\_proba  woe\_results
+        0       0.245008        387.0
+        1       0.541362        422.0
+        2       0.185747        578.0
+        3       0.154879        553.0
+        4       0.129176        574.0
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{default\PYZus{}proba}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{woe\PYZus{}results}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+0.26691283700624724
+515.46096
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{def} \PY{n+nf}{plot\PYZus{}distribution}\PY{p}{(}\PY{n}{result}\PY{p}{)}\PY{p}{:}
+            \PY{n}{std\PYZus{}left} \PY{o}{=} \PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{median}\PY{p}{(}\PY{n}{result}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{np}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{n}{result}\PY{p}{)}\PY{p}{)}
+            \PY{n}{std\PYZus{}right} \PY{o}{=} \PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{median}\PY{p}{(}\PY{n}{result}\PY{p}{)} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{n}{result}\PY{p}{)}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{max:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{n}{result}\PY{p}{)}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{min:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{n}{result}\PY{p}{)}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{mean:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{result}\PY{p}{)}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{median:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{median}\PY{p}{(}\PY{n}{result}\PY{p}{)}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{std:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{n}{result}\PY{p}{)}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{std\PYZus{}left}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{std\PYZus{}right}\PY{p}{)}
+            \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{result}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{l+m+mi}{55}\PY{p}{)}
+            \PY{n}{plt}\PY{o}{.}\PY{n}{axvline}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{result}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cyan}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n}{plt}\PY{o}{.}\PY{n}{axvline}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{median}\PY{p}{(}\PY{n}{result}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{red}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n}{plt}\PY{o}{.}\PY{n}{axvline}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{n}{std\PYZus{}left}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{orange}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n}{plt}\PY{o}{.}\PY{n}{axvline}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{n}{std\PYZus{}right}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{green}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            
+        \PY{k}{def} \PY{n+nf}{plot\PYZus{}get\PYZus{}bins}\PY{p}{(}\PY{n}{result\PYZus{}removed\PYZus{}outliers}\PY{p}{)}\PY{p}{:}
+            \PY{n}{std\PYZus{}left} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{median}\PY{p}{(}\PY{n}{result\PYZus{}removed\PYZus{}outliers}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{np}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{n}{result\PYZus{}removed\PYZus{}outliers}\PY{p}{)}
+            \PY{n}{std\PYZus{}right} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{n}{result\PYZus{}removed\PYZus{}outliers}\PY{p}{)} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{median}\PY{p}{(}\PY{n}{result\PYZus{}removed\PYZus{}outliers}\PY{p}{)}
+            \PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{bins}\PY{p}{,} \PY{n}{patches}\PY{p}{)} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{result\PYZus{}removed\PYZus{}outliers}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{l+m+mi}{55}\PY{p}{)}
+            \PY{c+c1}{\PYZsh{}plt.axvline(x=np.mean(result\PYZus{}removed\PYZus{}outliers), color=\PYZsq{}cyan\PYZsq{})}
+            \PY{n}{plt}\PY{o}{.}\PY{n}{axvline}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{median}\PY{p}{(}\PY{n}{result\PYZus{}removed\PYZus{}outliers}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{red}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n}{plt}\PY{o}{.}\PY{n}{axvline}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{n}{std\PYZus{}left}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{orange}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n}{plt}\PY{o}{.}\PY{n}{axvline}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{n}{std\PYZus{}right}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{green}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{k}{return} \PY{n}{bins}
+            
+        \PY{k}{def} \PY{n+nf}{compute\PYZus{}score}\PY{p}{(}\PY{n}{num}\PY{p}{)}\PY{p}{:}
+            \PY{k}{for} \PY{n}{index}\PY{p}{,} \PY{n}{elem} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{bins}\PY{p}{)}\PY{p}{:}
+                \PY{k}{if} \PY{n}{elem} \PY{o}{\PYZgt{}} \PY{n}{num}\PY{p}{:}
+                    \PY{k}{return} \PY{p}{(}\PY{l+m+mi}{550}\PY{o}{\PYZhy{}} \PY{n}{index} \PY{o}{*} \PY{l+m+mi}{10}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{300}
+            \PY{k}{return} \PY{l+m+mi}{300}
+        
+        \PY{k}{def} \PY{n+nf}{compute\PYZus{}score\PYZus{}standard}\PY{p}{(}\PY{n}{proba}\PY{p}{)}\PY{p}{:}
+            \PY{n}{factor} \PY{o}{=} \PY{l+m+mi}{20}\PY{o}{/}\PY{n}{np}\PY{o}{.}\PY{n}{log}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}
+            \PY{n}{intercept} \PY{o}{=} \PY{l+m+mi}{600} \PY{o}{\PYZhy{}} \PY{n}{factor} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{log}\PY{p}{(}\PY{l+m+mi}{50}\PY{p}{)}
+            \PY{n}{score} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{round}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{log}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{proba}\PY{p}{)} \PY{o}{/} \PY{n}{proba}\PY{p}{)} \PY{o}{*} \PY{n}{factor} \PY{o}{+} \PY{n}{intercept}\PY{p}{)} \PY{c+c1}{\PYZsh{} * 28.85 + 487.122}
+            \PY{k}{if} \PY{n}{score} \PY{o}{\PYZlt{}} \PY{l+m+mi}{0}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{score}\PY{p}{)}
+                \PY{k}{return} \PY{l+m+mi}{0}
+            \PY{k}{else}\PY{p}{:}
+                \PY{k}{return} \PY{n}{score}
+            
+        \PY{n}{plot\PYZus{}distribution}\PY{p}{(}\PY{n}{proba}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+max: 0.9926646448618075
+min: 0.00018588669659693114
+mean: 0.26691283700624724
+median: 0.22502611786790405
+std: 0.1716619882941379
+0.053364129573766156
+0.396688106162042
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_5_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{std\PYZus{}right} \PY{o}{=} \PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{median}\PY{p}{(}\PY{n}{proba}\PY{p}{)} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{n}{proba}\PY{p}{)}\PY{p}{)}
+        \PY{n}{result\PYZus{}removed\PYZus{}outliers} \PY{o}{=} \PY{p}{[}\PY{n}{i} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{proba} \PY{k}{if} \PY{n}{i} \PY{o}{\PYZlt{}} \PY{n}{std\PYZus{}right}\PY{p}{]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{n}{result\PYZus{}removed\PYZus{}outliers}\PY{p}{)}\PY{p}{)}
+        \PY{n}{bins} \PY{o}{=} \PY{n}{plot\PYZus{}get\PYZus{}bins}\PY{p}{(}\PY{n}{result\PYZus{}removed\PYZus{}outliers}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+0.3966781149495591
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_6_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{compute\PYZus{}score}\PY{p}{(}\PY{n}{x}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{default\PYZus{}proba}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+        \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{score\PYZus{}standard}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{compute\PYZus{}score\PYZus{}standard}\PY{p}{(}\PY{n}{x}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{default\PYZus{}proba}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+        \PY{n}{df}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:}        default\_proba  woe\_results  score  score\_standard
+        0           0.245008        387.0    510           520.0
+        1           0.541362        422.0    300           482.0
+        2           0.185747        578.0    590           530.0
+        3           0.154879        553.0    630           536.0
+        4           0.129176        574.0    670           542.0
+        5           0.109392        580.0    690           548.0
+        6           0.382621        548.0    310           501.0
+        7           0.369904        549.0    330           502.0
+        8           0.235748        565.0    520           521.0
+        9           0.234645        476.0    520           521.0
+        10          0.209737        568.0    550           525.0
+        11          0.137513        540.0    650           540.0
+        12          0.279317        535.0    460           514.0
+        13          0.115063        416.0    690           546.0
+        14          0.761419        585.0    300           454.0
+        15          0.186051        555.0    590           530.0
+        16          0.567640        425.0    300           479.0
+        17          0.583182        551.0    300           477.0
+        18          0.087043        533.0    720           555.0
+        19          0.321927        532.0    400           509.0
+        20          0.054856        586.0    770           569.0
+        21          0.317561        436.0    400           509.0
+        22          0.171869        409.0    610           532.0
+        23          0.170012        388.0    610           533.0
+        24          0.304928        542.0    420           511.0
+        25          0.068829        549.0    750           562.0
+        26          0.232189        367.0    520           522.0
+        27          0.245769        511.0    500           519.0
+        28          0.080463        514.0    730           557.0
+        29          0.146130        561.0    640           538.0
+        {\ldots}              {\ldots}          {\ldots}    {\ldots}             {\ldots}
+        24970       0.297240        412.0    430           512.0
+        24971       0.339226        400.0    370           506.0
+        24972       0.343271        461.0    370           506.0
+        24973       0.180119        431.0    600           531.0
+        24974       0.496941        417.0    300           487.0
+        24975       0.296137        390.0    430           512.0
+        24976       0.464006        419.0    300           491.0
+        24977       0.207385        379.0    560           526.0
+        24978       0.176509        420.0    600           532.0
+        24979       0.174763        436.0    600           532.0
+        24980       0.228182        434.0    530           522.0
+        24981       0.205503        392.0    560           526.0
+        24982       0.109644        419.0    690           548.0
+        24983       0.380572        363.0    320           501.0
+        24984       0.061554        397.0    760           566.0
+        24985       0.181773        437.0    590           531.0
+        24986       0.236027        383.0    520           521.0
+        24987       0.434519        415.0    300           495.0
+        24988       0.203431        462.0    560           527.0
+        24989       0.258570        378.0    490           518.0
+        24990       0.165091        366.0    620           534.0
+        24991       0.270665        433.0    470           516.0
+        24992       0.262175        399.0    480           517.0
+        24993       0.321089        433.0    400           509.0
+        24994       0.195824        412.0    570           528.0
+        24995       0.114846        428.0    690           546.0
+        24996       0.141695        429.0    650           539.0
+        24997       0.743888        395.0    300           456.0
+        24998       0.472421        406.0    300           490.0
+        24999       0.040291        420.0    790           579.0
+        
+        [25000 rows x 4 columns]
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{plot\PYZus{}distribution}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+max: 840
+min: 300
+mean: 518.5532
+median: 530.0
+std: 153.35490461592678
+376.6450953840732
+683.3549046159268
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_8_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{plot\PYZus{}distribution}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{score\PYZus{}standard}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+max: 735.0
+min: 346.0
+mean: 521.03832
+median: 523.0
+std: 27.73566894051052
+495.26433105948945
+550.7356689405105
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_9_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{plot\PYZus{}distribution}\PY{p}{(}\PY{n}{woe\PYZus{}result}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+max: 615.0
+min: 351.0
+mean: 515.46096
+median: 544.0
+std: 62.273625844962645
+481.7263741550374
+606.2736258449627
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_10_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{log\PYZus{}scale}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{default\PYZus{}proba}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{log}\PY{p}{)} \PY{c+c1}{\PYZsh{} the smaller default\PYZus{}proba, the more negative the resulting log}
+         \PY{n}{plot\PYZus{}distribution}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{log\PYZus{}scale}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+max: -0.007362391149326146
+min: -8.590373227944253
+mean: -1.528060146376477
+median: -1.4915388041650415
+std: 0.6739951381644436
+-2.165533942329485
+-0.8175436660005979
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_11_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{max\PYZus{}log} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{log\PYZus{}scale}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+         \PY{n}{min\PYZus{}log} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{log\PYZus{}scale}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+         \PY{n}{range\PYZus{}log} \PY{o}{=} \PY{n}{max\PYZus{}log} \PY{o}{\PYZhy{}} \PY{n}{min\PYZus{}log}
+         \PY{n}{bucket\PYZus{}size} \PY{o}{=} \PY{n}{range\PYZus{}log} \PY{o}{/} \PY{l+m+mi}{55}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{range\PYZus{}log}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{bucket\PYZus{}size}\PY{p}{)}
+         
+         \PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{bins}\PY{p}{,} \PY{n}{patches}\PY{p}{)} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{log\PYZus{}scale}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{l+m+mi}{55}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{bins}\PY{p}{)}
+         
+         \PY{k}{def} \PY{n+nf}{compute\PYZus{}log\PYZus{}score}\PY{p}{(}\PY{n}{num}\PY{p}{)}\PY{p}{:}
+             \PY{k}{for} \PY{n}{index}\PY{p}{,} \PY{n}{elem} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{bins}\PY{p}{)}\PY{p}{:}
+                 \PY{k}{if} \PY{n}{elem} \PY{o}{\PYZgt{}} \PY{n}{num}\PY{p}{:}
+                     \PY{k}{return} \PY{p}{(}\PY{n}{index} \PY{o}{*} \PY{l+m+mi}{10}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{300}
+             \PY{k}{return} \PY{l+m+mi}{850}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+8.583010836794926
+0.1560547424871805
+[-8.59037323e+00 -8.43431849e+00 -8.27826374e+00 -8.12220900e+00
+ -7.96615426e+00 -7.81009952e+00 -7.65404477e+00 -7.49799003e+00
+ -7.34193529e+00 -7.18588055e+00 -7.02982580e+00 -6.87377106e+00
+ -6.71771632e+00 -6.56166158e+00 -6.40560683e+00 -6.24955209e+00
+ -6.09349735e+00 -5.93744261e+00 -5.78138786e+00 -5.62533312e+00
+ -5.46927838e+00 -5.31322364e+00 -5.15716889e+00 -5.00111415e+00
+ -4.84505941e+00 -4.68900467e+00 -4.53294992e+00 -4.37689518e+00
+ -4.22084044e+00 -4.06478570e+00 -3.90873095e+00 -3.75267621e+00
+ -3.59662147e+00 -3.44056673e+00 -3.28451198e+00 -3.12845724e+00
+ -2.97240250e+00 -2.81634776e+00 -2.66029301e+00 -2.50423827e+00
+ -2.34818353e+00 -2.19212879e+00 -2.03607404e+00 -1.88001930e+00
+ -1.72396456e+00 -1.56790982e+00 -1.41185507e+00 -1.25580033e+00
+ -1.09974559e+00 -9.43690846e-01 -7.87636104e-01 -6.31581361e-01
+ -4.75526619e-01 -3.19471876e-01 -1.63417134e-01 -7.36239115e-03]
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_12_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{log\PYZus{}score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{compute\PYZus{}score}\PY{p}{(}\PY{n}{x}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{log\PYZus{}scale}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+         \PY{n}{df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}14}]:}    default\_proba  woe\_results  score  score\_standard  log\_scale  log\_score
+         0       0.245008        387.0    510           520.0  -1.406464        380
+         1       0.541362        422.0    300           482.0  -0.613668        330
+         2       0.185747        578.0    590           530.0  -1.683368        400
+         3       0.154879        553.0    630           536.0  -1.865112        410
+         4       0.129176        574.0    670           542.0  -2.046578        430
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{plot\PYZus{}distribution}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{log\PYZus{}score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+max: 840
+min: 300
+mean: 392.4408
+median: 390.0
+std: 43.29640279930886
+346.70359720069115
+433.29640279930885
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_14_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{n}{by}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{log\PYZus{}score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+       default\_proba  woe\_results  score  score\_standard  log\_scale  log\_score
+14056       0.000186        544.0    840           735.0  -8.590373        840
+4095        0.001512        549.0    840           674.0  -6.494539        710
+23206       0.003220        579.0    840           653.0  -5.738405        660
+22787       0.006645        561.0    840           632.0  -5.013880        620
+8772        0.005999        405.0    840           635.0  -5.116215        620
+15500       0.006356        394.0    840           633.0  -5.058388        620
+3762        0.007481        533.0    830           628.0  -4.895419        610
+12333       0.006869        462.0    840           631.0  -4.980787        610
+6486        0.007707        390.0    830           627.0  -4.865584        610
+22763       0.008055        547.0    830           626.0  -4.821415        600
+12085       0.008828        422.0    830           623.0  -4.729798        600
+21425       0.008829        445.0    830           623.0  -4.729716        600
+8808        0.008797        417.0    830           623.0  -4.733349        600
+86          0.011437        444.0    830           616.0  -4.470864        580
+24629       0.011902        436.0    830           615.0  -4.431034        580
+8296        0.012416        549.0    830           613.0  -4.388790        580
+8717        0.013531        560.0    830           611.0  -4.302763        570
+6506        0.013583        581.0    830           611.0  -4.298909        570
+11973       0.013886        560.0    830           610.0  -4.276899        570
+23858       0.012811        447.0    830           612.0  -4.357462        570
+7408        0.016881        413.0    820           604.0  -4.081580        560
+17478       0.015182        528.0    820           608.0  -4.187671        560
+12741       0.016586        559.0    820           605.0  -4.099169        560
+2826        0.014817        500.0    820           608.0  -4.211947        560
+14403       0.019556        543.0    820           600.0  -3.934479        550
+13950       0.017270        491.0    820           604.0  -4.058784        550
+17336       0.018363        559.0    820           602.0  -3.997415        550
+7510        0.019889        569.0    820           600.0  -3.917588        550
+19625       0.017382        534.0    820           604.0  -4.052326        550
+9954        0.019262        406.0    820           601.0  -3.949626        550
+{\ldots}              {\ldots}          {\ldots}    {\ldots}             {\ldots}        {\ldots}        {\ldots}
+4870        0.877222        404.0    300           430.0  -0.130995        300
+12831       0.948855        399.0    300           403.0  -0.052499        300
+13761       0.862282        541.0    300           434.0  -0.148173        300
+16947       0.942030        589.0    300           407.0  -0.059718        300
+22622       0.874953        559.0    300           431.0  -0.133585        300
+13452       0.871870        413.0    300           432.0  -0.137115        300
+15473       0.853611        583.0    300           436.0  -0.158280        300
+13570       0.986275        374.0    300           364.0  -0.013820        300
+3441        0.908700        561.0    300           421.0  -0.095740        300
+24272       0.942599        412.0    300           406.0  -0.059114        300
+21500       0.902784        415.0    300           423.0  -0.102272        300
+22058       0.953003        583.0    300           400.0  -0.048137        300
+5805        0.931930        561.0    300           412.0  -0.070498        300
+11094       0.982841        582.0    300           370.0  -0.017308        300
+13904       0.868503        424.0    300           433.0  -0.140985        300
+24712       0.883112        470.0    300           429.0  -0.124303        300
+12872       0.931848        577.0    300           412.0  -0.070585        300
+10695       0.870456        430.0    300           432.0  -0.138738        300
+22474       0.931630        599.0    300           412.0  -0.070820        300
+18201       0.991047        553.0    300           351.0  -0.008993        300
+165         0.912646        552.0    300           419.0  -0.091407        300
+9302        0.898808        544.0    300           424.0  -0.106685        300
+703         0.863684        416.0    300           434.0  -0.146548        300
+4996        0.931154        581.0    300           412.0  -0.071330        300
+24867       0.937647        458.0    300           409.0  -0.064382        300
+14538       0.884292        550.0    300           428.0  -0.122968        300
+13622       0.902489        553.0    300           423.0  -0.102599        300
+5964        0.941715        560.0    300           407.0  -0.060052        300
+5992        0.887732        555.0    300           427.0  -0.119086        300
+4420        0.859468        538.0    300           435.0  -0.151441        300
+
+[25000 rows x 6 columns]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{n}{by}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{woe\PYZus{}results}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+       default\_proba  woe\_results  score  score\_standard  log\_scale  log\_score
+11260       0.187706        615.0    580           529.0  -1.672878        400
+21261       0.246078        615.0    500           519.0  -1.402107        380
+6788        0.222958        614.0    540           523.0  -1.500771        390
+6067        0.240553        614.0    510           520.0  -1.424814        390
+5133        0.267092        614.0    470           516.0  -1.320163        380
+8441        0.161018        614.0    620           535.0  -1.826241        410
+3225        0.172225        614.0    610           532.0  -1.758952        410
+11373       0.368897        614.0    330           503.0  -0.997239        360
+7126        0.170108        613.0    610           533.0  -1.771321        410
+3508        0.241970        612.0    510           520.0  -1.418940        390
+6696        0.334618        611.0    380           507.0  -1.094766        360
+16685       0.162643        611.0    620           534.0  -1.816199        410
+17705       0.132198        610.0    660           541.0  -2.023456        420
+3369        0.424762        610.0    300           496.0  -0.856225        350
+11065       0.099147        610.0    710           551.0  -2.311151        440
+7545        0.185408        609.0    590           530.0  -1.685195        400
+11714       0.047357        609.0    780           574.0  -3.050033        490
+3877        0.187379        609.0    590           529.0  -1.674620        400
+8210        0.149239        609.0    640           537.0  -1.902205        420
+9618        0.189833        609.0    580           529.0  -1.661609        400
+2195        0.362357        609.0    340           503.0  -1.015126        360
+18348       0.153125        608.0    630           536.0  -1.876499        410
+10066       0.402404        608.0    300           499.0  -0.910298        350
+7359        0.193040        608.0    580           528.0  -1.644857        400
+6259        0.303009        608.0    420           511.0  -1.193992        370
+22471       0.185743        608.0    590           530.0  -1.683391        400
+13502       0.033352        608.0    800           584.0  -3.400651        510
+15238       0.246532        608.0    500           519.0  -1.400265        380
+2591        0.758428        608.0    300           454.0  -0.276508        310
+17320       0.651357        608.0    300           469.0  -0.428697        320
+{\ldots}              {\ldots}          {\ldots}    {\ldots}             {\ldots}        {\ldots}        {\ldots}
+1251        0.851226        365.0    300           437.0  -0.161078        300
+16132       0.258163        365.0    490           518.0  -1.354166        380
+11010       0.365696        364.0    340           503.0  -1.005953        360
+19960       0.268964        364.0    470           516.0  -1.313178        380
+4615        0.119325        364.0    680           545.0  -2.125901        430
+3540        0.260389        364.0    480           517.0  -1.345580        380
+2602        0.168552        364.0    610           533.0  -1.780514        410
+23693       0.556087        364.0    300           481.0  -0.586831        330
+22192       0.105792        364.0    700           549.0  -2.246278        440
+24983       0.380572        363.0    320           501.0  -0.966081        360
+9640        0.119874        363.0    680           545.0  -2.121313        430
+16767       0.112669        363.0    690           547.0  -2.183297        430
+14873       0.155863        363.0    630           536.0  -1.858777        410
+21003       0.311867        362.0    410           510.0  -1.165179        370
+13640       0.207333        361.0    560           526.0  -1.573429        400
+16353       0.087795        361.0    720           555.0  -2.432750        450
+15531       0.098517        361.0    710           551.0  -2.317524        440
+15154       0.255578        361.0    490           518.0  -1.364227        380
+6019        0.178615        361.0    600           531.0  -1.722522        400
+13895       0.141337        361.0    650           539.0  -1.956610        420
+4127        0.315945        360.0    410           509.0  -1.152188        370
+5458        0.444347        360.0    300           494.0  -0.811149        350
+9197        0.258544        360.0    490           518.0  -1.352690        380
+13404       0.237314        360.0    520           521.0  -1.438372        390
+23800       0.103704        359.0    700           549.0  -2.266215        440
+993         0.142452        359.0    650           539.0  -1.948749        420
+15700       0.480221        358.0    300           489.0  -0.733508        340
+21464       0.133469        355.0    660           541.0  -2.013889        420
+24484       0.254682        355.0    490           518.0  -1.367740        380
+24449       0.111703        351.0    690           547.0  -2.191911        430
+
+[25000 rows x 6 columns]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{n}{by}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+       default\_proba  woe\_results  score  score\_standard  log\_scale  log\_score
+15500       0.006356        394.0    840           633.0  -5.058388        620
+14056       0.000186        544.0    840           735.0  -8.590373        840
+23206       0.003220        579.0    840           653.0  -5.738405        660
+12333       0.006869        462.0    840           631.0  -4.980787        610
+8772        0.005999        405.0    840           635.0  -5.116215        620
+4095        0.001512        549.0    840           674.0  -6.494539        710
+22787       0.006645        561.0    840           632.0  -5.013880        620
+21425       0.008829        445.0    830           623.0  -4.729716        600
+86          0.011437        444.0    830           616.0  -4.470864        580
+12085       0.008828        422.0    830           623.0  -4.729798        600
+8296        0.012416        549.0    830           613.0  -4.388790        580
+11973       0.013886        560.0    830           610.0  -4.276899        570
+23858       0.012811        447.0    830           612.0  -4.357462        570
+22763       0.008055        547.0    830           626.0  -4.821415        600
+8717        0.013531        560.0    830           611.0  -4.302763        570
+24629       0.011902        436.0    830           615.0  -4.431034        580
+6486        0.007707        390.0    830           627.0  -4.865584        610
+6506        0.013583        581.0    830           611.0  -4.298909        570
+8808        0.008797        417.0    830           623.0  -4.733349        600
+3762        0.007481        533.0    830           628.0  -4.895419        610
+7510        0.019889        569.0    820           600.0  -3.917588        550
+2826        0.014817        500.0    820           608.0  -4.211947        560
+20792       0.019545        556.0    820           600.0  -3.935060        550
+13950       0.017270        491.0    820           604.0  -4.058784        550
+14403       0.019556        543.0    820           600.0  -3.934479        550
+11450       0.020799        547.0    820           598.0  -3.872848        540
+8536        0.021029        545.0    820           598.0  -3.861837        540
+19625       0.017382        534.0    820           604.0  -4.052326        550
+12848       0.019656        562.0    820           600.0  -3.929380        550
+17478       0.015182        528.0    820           608.0  -4.187671        560
+{\ldots}              {\ldots}          {\ldots}    {\ldots}             {\ldots}        {\ldots}        {\ldots}
+6227        0.514755        564.0    300           485.0  -0.664064        340
+13070       0.409797        535.0    300           498.0  -0.892093        350
+6229        0.578420        472.0    300           478.0  -0.547455        330
+6234        0.590022        551.0    300           477.0  -0.527595        330
+11826       0.390000        545.0    300           500.0  -0.941608        350
+6186        0.716600        436.0    300           460.0  -0.333238        320
+6182        0.585404        424.0    300           477.0  -0.535453        330
+19755       0.645926        445.0    300           470.0  -0.437070        320
+19777       0.465613        560.0    300           491.0  -0.764401        340
+6109        0.517952        548.0    300           485.0  -0.657872        340
+19802       0.674550        526.0    300           466.0  -0.393709        320
+19800       0.442272        549.0    300           494.0  -0.815831        350
+11833       0.755221        556.0    300           455.0  -0.280745        310
+19790       0.475634        553.0    300           490.0  -0.743107        340
+19786       0.434288        505.0    300           495.0  -0.834047        350
+19785       0.699237        582.0    300           463.0  -0.357766        320
+6137        0.509675        442.0    300           486.0  -0.673983        340
+6140        0.590838        535.0    300           477.0  -0.526214        330
+6159        0.544101        541.0    300           482.0  -0.608621        330
+13073       0.417841        544.0    300           497.0  -0.872655        350
+19773       0.390735        537.0    300           500.0  -0.939725        350
+11832       0.448856        545.0    300           493.0  -0.801054        350
+19771       0.626266        481.0    300           472.0  -0.467979        320
+19767       0.408756        393.0    300           498.0  -0.894637        350
+6163        0.673839        421.0    300           466.0  -0.394764        320
+19763       0.452867        552.0    300           493.0  -0.792156        350
+14989       0.414950        531.0    300           497.0  -0.879598        350
+6174        0.400260        414.0    300           499.0  -0.915642        350
+19758       0.849637        540.0    300           437.0  -0.162946        300
+13904       0.868503        424.0    300           433.0  -0.140985        300
+
+[25000 rows x 6 columns]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{n}{by}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{score\PYZus{}standard}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+       default\_proba  woe\_results  score  score\_standard  log\_scale  log\_score
+14056       0.000186        544.0    840           735.0  -8.590373        840
+4095        0.001512        549.0    840           674.0  -6.494539        710
+23206       0.003220        579.0    840           653.0  -5.738405        660
+8772        0.005999        405.0    840           635.0  -5.116215        620
+15500       0.006356        394.0    840           633.0  -5.058388        620
+22787       0.006645        561.0    840           632.0  -5.013880        620
+12333       0.006869        462.0    840           631.0  -4.980787        610
+3762        0.007481        533.0    830           628.0  -4.895419        610
+6486        0.007707        390.0    830           627.0  -4.865584        610
+22763       0.008055        547.0    830           626.0  -4.821415        600
+12085       0.008828        422.0    830           623.0  -4.729798        600
+8808        0.008797        417.0    830           623.0  -4.733349        600
+21425       0.008829        445.0    830           623.0  -4.729716        600
+86          0.011437        444.0    830           616.0  -4.470864        580
+24629       0.011902        436.0    830           615.0  -4.431034        580
+8296        0.012416        549.0    830           613.0  -4.388790        580
+23858       0.012811        447.0    830           612.0  -4.357462        570
+6506        0.013583        581.0    830           611.0  -4.298909        570
+8717        0.013531        560.0    830           611.0  -4.302763        570
+11973       0.013886        560.0    830           610.0  -4.276899        570
+17478       0.015182        528.0    820           608.0  -4.187671        560
+2826        0.014817        500.0    820           608.0  -4.211947        560
+12741       0.016586        559.0    820           605.0  -4.099169        560
+13950       0.017270        491.0    820           604.0  -4.058784        550
+19625       0.017382        534.0    820           604.0  -4.052326        550
+2605        0.017280        540.0    820           604.0  -4.058178        550
+7408        0.016881        413.0    820           604.0  -4.081580        560
+6173        0.018346        532.0    820           602.0  -3.998331        550
+17336       0.018363        559.0    820           602.0  -3.997415        550
+9954        0.019262        406.0    820           601.0  -3.949626        550
+{\ldots}              {\ldots}          {\ldots}    {\ldots}             {\ldots}        {\ldots}        {\ldots}
+636         0.957418        506.0    300           397.0  -0.043515        300
+23807       0.958230        412.0    300           397.0  -0.042667        300
+16633       0.959695        412.0    300           396.0  -0.041140        300
+19873       0.959612        557.0    300           396.0  -0.041226        300
+12754       0.963635        553.0    300           393.0  -0.037042        300
+9650        0.964922        407.0    300           391.0  -0.035708        300
+21045       0.965158        543.0    300           391.0  -0.035464        300
+8769        0.970314        544.0    300           387.0  -0.030136        300
+20044       0.976896        558.0    300           379.0  -0.023375        300
+13602       0.977164        558.0    300           379.0  -0.023101        300
+6364        0.977579        541.0    300           378.0  -0.022676        300
+5309        0.979853        583.0    300           375.0  -0.020352        300
+680         0.980416        560.0    300           374.0  -0.019778        300
+21291       0.981800        436.0    300           372.0  -0.018368        300
+11127       0.982039        549.0    300           372.0  -0.018125        300
+11094       0.982841        582.0    300           370.0  -0.017308        300
+5381        0.982978        459.0    300           370.0  -0.017168        300
+16066       0.983637        388.0    300           369.0  -0.016499        300
+21070       0.984416        547.0    300           368.0  -0.015707        300
+4284        0.986189        380.0    300           364.0  -0.013908        300
+13570       0.986275        374.0    300           364.0  -0.013820        300
+2023        0.986339        544.0    300           364.0  -0.013755        300
+22675       0.988106        532.0    300           360.0  -0.011965        300
+201         0.989441        556.0    300           356.0  -0.010615        300
+453         0.990212        552.0    300           354.0  -0.009837        300
+24885       0.990760        410.0    300           352.0  -0.009283        300
+18201       0.991047        553.0    300           351.0  -0.008993        300
+7133        0.992325        540.0    300           347.0  -0.007705        300
+18791       0.992228        421.0    300           347.0  -0.007802        300
+12823       0.992665        555.0    300           346.0  -0.007362        300
+
+[25000 rows x 6 columns]
+
+    \end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
